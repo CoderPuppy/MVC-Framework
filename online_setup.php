@@ -25,9 +25,14 @@ file_put_contents(DIR . "lib/model.php", file_get_contents("https://github.com/d
 file_put_contents(DIR . "lib/router.php", file_get_contents("https://github.com/drewyoung1/MVC-Framework/raw/master/lib/router.php"));
 $base_url = dirname(getenv("SCRIPT_NAME"));
 $contents = <<<HT
-Options +FollowSymlinks
 RewriteEngine On
 RewriteBase $base_url
+
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule (.*) index.php/$1
+
+RewriteCond %{REQUEST_FILENAME} -F
+RewriteRule (.*) index.php/$1
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
