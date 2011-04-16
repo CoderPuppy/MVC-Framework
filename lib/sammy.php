@@ -52,8 +52,8 @@ class Sammy {
   
   public static function run() {
     if( !static::$route_found ) {
-      header("HTTP/1.0 404 Not Found"); 
-      include(ERR_PATH . "404.html");
+      header("HTTP/1.0 404 Not Found");
+      include ERR_PATH . "404.php";
     }
     
     ob_end_flush();

@@ -922,13 +922,17 @@ RewriteEngine On
 RewriteBase $base_url
 
 RewriteCond %{REQUEST_FILENAME} -d
+Header set Set-Cookie "no_redirect=true"
 RewriteRule (.*) index.php/$1
 
 RewriteCond %{REQUEST_FILENAME} -F
+Header set Set-Cookie "no_redirect=true"
 RewriteRule (.*) index.php/$1
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{HTTP_COOKIE} no_redirect=false
+Header set Set-Cookie "no_redirect=false"
 RewriteRule (.*) index.php/$1
 HT;
 file_put_contents(DIR . ".htaccess", $contents);

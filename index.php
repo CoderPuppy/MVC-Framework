@@ -5,6 +5,7 @@ Router::get("/hello",function() {
     Hi, Hello, Hola, Bonjure
     <?php
 });
+Router::redirect('get', '/hi', '/mvc/hello');
 Router::get("/",function() {
 		?>
     Home
@@ -40,6 +41,10 @@ Router::get('/controller',controller('index'));
 Router::get('/controller/other', action('index','other'));
 
 Router::get('/controller/model', action('indexLocal','model'));
+
+Router::get('/bye', function() {
+return 'hi';
+});
 
 Router::handle();
 ?>

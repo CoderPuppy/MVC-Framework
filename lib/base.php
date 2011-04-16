@@ -1,5 +1,6 @@
 <?php
-define('BASE_PATH', dirname(realpath(__FILE__)) . '\\..\\');
+define('ROOT_PATH', dirname(getenv('SCRIPT_NAME')));
+define('BASE_PATH', substr(dirname(realpath(__FILE__)), 0, strlen(dirname(realpath(__FILE__)))-3));
 define('APP_PATH', BASE_PATH . 'app\\');
 define('LIB_PATH', BASE_PATH . 'lib\\');
 define('TMP_PATH', BASE_PATH . 'tmp\\');
