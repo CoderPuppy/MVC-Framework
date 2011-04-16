@@ -29,9 +29,19 @@ RewriteEngine On
 RewriteBase $base_url
 
 RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME} =lib [OR]
+RewriteCond %{REQUEST_FILENAME} =app [OR]
+RewriteCond %{REQUEST_FILENAME} =tmp [OR]
+RewriteCond %{REQUEST_FILENAME} =err
 RewriteRule (.*) index.php/$1
 
 RewriteCond %{REQUEST_FILENAME} -F
+RewriteCond %{REQUEST_FILENAME} offline_setup\.php [OR]
+RewriteCond %{REQUEST_FILENAME} online_setup\.php [OR]
+RewriteCond %{REQUEST_FILENAME} \.htaccess [OR]
+RewriteCond %{REQUEST_FILENAME} config\.php [OR]
+RewriteCond %{REQUEST_FILENAME} \.gitignore [OR]
+RewriteCond %{REQUEST_FILENAME} README\.md
 RewriteRule (.*) index.php/$1
 
 RewriteCond %{REQUEST_FILENAME} !-f
