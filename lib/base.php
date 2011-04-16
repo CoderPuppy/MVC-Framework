@@ -3,6 +3,7 @@ define('BASE_PATH', dirname(realpath(__FILE__)) . '\\..\\');
 define('APP_PATH', BASE_PATH . 'app\\');
 define('LIB_PATH', BASE_PATH . 'lib\\');
 define('TMP_PATH', BASE_PATH . 'tmp\\');
+define('ERR_PATH', BASE_PATH . 'err\\');
 
 // function returner returns it's single argument
 function returner($data) {

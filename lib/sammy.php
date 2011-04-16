@@ -52,7 +52,8 @@ class Sammy {
   
   public static function run() {
     if( !static::$route_found ) {
-      echo 'Route not defined!';
+      header("HTTP/1.0 404 Not Found"); 
+      include(ERR_PATH . "404.html");
     }
     
     ob_end_flush();

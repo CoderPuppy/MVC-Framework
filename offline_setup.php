@@ -1,9 +1,5 @@
 <?php
 define("DIR", dirname(realpath(__FILE__)) . "\\");
-function endStrPos($haystack, $needle) {
-	$pos = strrpos($haystack, $needle);
-	return ($pos === false ? false : $pos + strlen($needle)); 	
-}
 
 if(!file_exists(DIR . "lib/")) {
 	mkdir(DIR . "lib");
