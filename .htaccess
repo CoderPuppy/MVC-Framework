@@ -2,15 +2,21 @@ RewriteEngine On
 RewriteBase /mvc/
 
 RewriteCond %{REQUEST_FILENAME} -d
-Header set Set-Cookie "no_redirect=true"
+RewriteCond %{REQUEST_FILENAME} =lib [OR]
+RewriteCond %{REQUEST_FILENAME} =app [OR]
+RewriteCond %{REQUEST_FILENAME} =tmp [OR]
+RewriteCond %{REQUEST_FILENAME} =err
 RewriteRule (.*) index.php/$1
 
 RewriteCond %{REQUEST_FILENAME} -F
-Header set Set-Cookie "no_redirect=true"
+RewriteCond %{REQUEST_FILENAME} offline_setup\.php [OR]
+RewriteCond %{REQUEST_FILENAME} online_setup\.php [OR]
+RewriteCond %{REQUEST_FILENAME} \.htaccess [OR]
+RewriteCond %{REQUEST_FILENAME} config\.php [OR]
+RewriteCond %{REQUEST_FILENAME} \.gitignore [OR]
+RewriteCond %{REQUEST_FILENAME} README\.md
 RewriteRule (.*) index.php/$1
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{HTTP_COOKIE} no_redirect=false
-Header set Set-Cookie "no_redirect=false"
 RewriteRule (.*) index.php/$1

@@ -1,4 +1,5 @@
 <?php
+echo "<pre>";
 define("DIR", dirname(realpath(__FILE__)) . "\\");
 
 if(!file_exists(DIR . "lib/")) {
@@ -12,8 +13,9 @@ if(!file_exists(DIR . "app/view/"))
 	mkdir(DIR . "app/view");
 if(!file_exists(DIR . "app/models/"))
 	mkdir(DIR . "app/models");
-echo "finished creating dirs ";
+echo "Finished creating dirs";
 file_put_contents(DIR . "index.php", "");
+echo "\nCreated index.php";
 $contents = <<<'CONFIG'
 <?php
 
@@ -26,6 +28,7 @@ $contents = <<<'CONFIG'
 ?>
 CONFIG;
 file_put_contents(DIR . "config.php", $contents);
+echo "\nCreated config.php";
 $contents = <<<'ACONTROLLER'
 <?php
 	class AppController extends Controller{
@@ -34,6 +37,7 @@ $contents = <<<'ACONTROLLER'
 ?>
 ACONTROLLER;
 file_put_contents(DIR . "app/controllers/appController.php", $contents);
+echo "\nCreated app/controllers/appController.php";
 $contents = <<<'BASE'
 <?php
 define('BASE_PATH', dirname(realpath(DIR)) . PATH_SEPREATOR . '..' . PATH_SEPERATOR);
@@ -55,6 +59,7 @@ include_once "controllers.php";
 ?>
 BASE;
 file_put_contents(DIR . "lib/base.php", $contents);
+echo "\nCreated lib/base.php";
 $contents = <<<'OBJ'
 <?php
 class Object {
@@ -77,6 +82,7 @@ class Object {
 ?>
 OBJ;
 file_put_contents(DIR . "lib/object.php", $contents);
+echo "\nCreated lib/object.php";
 $contents = <<<'SAMMY'
 <?php
 /**
@@ -238,6 +244,7 @@ $sammy = Sammy::instance();
 ?>
 SAMMY;
 file_put_contents(DIR . "lib/sammy.php", $contents);
+echo "\nCreated lib/sammy.php";
 $contents = <<<'VIEWS'
 <?php
 
@@ -337,6 +344,7 @@ function view($name) {
 ?>
 VIEWS;
 file_put_contents(DIR . "lib/views.php", $contents);
+echo "\nCreated lib/views.php";
 $contents = <<<'CONTROLLERS'
 <?php
 function controller($name) {
@@ -446,6 +454,7 @@ class Controller extends Object{
 ?>
 CONTROLLERS;
 file_put_contents(DIR . "lib/controllers.php", $contents);
+echo "\nCreated lib/controllers.php";
 $contents = <<<'MODEL'
 <?php
 class Model extends Object{
@@ -857,6 +866,7 @@ class MVarDesc extends Object {
 ?>
 MODEL;
 file_put_contents(DIR . "lib/model.php", $contents);
+echo "\nCreated lib/model.php";
 $contents = <<<'ROUTER'
 <?php
 
@@ -916,6 +926,7 @@ $contents = <<<'ROUTER'
 ?>
 ROUTER;
 file_put_contents(DIR . "lib/router.php", $contents);
+echo "\nCreated lib/router.php";
 $base_url = dirname(getenv("SCRIPT_NAME"));
 $contents = <<<HT
 RewriteEngine On
@@ -936,4 +947,6 @@ Header set Set-Cookie "no_redirect=false"
 RewriteRule (.*) index.php/$1
 HT;
 file_put_contents(DIR . ".htaccess", $contents);
+echo "\nCreated .htaccess";
+echo "</pre>";
 ?>
