@@ -200,17 +200,6 @@ class Model extends Object{
 	
 	public function update($var_to_update, $new_val) {
 		
-		if(is_string($var_to_update)) {
-			foreach(static::$MVars as $var) {
-				if($var->name == $var_to_update)
-					$var_to_update = $var;
-				elseif(isset($var->data['name']) && $var->data['name'] == $var_to_update)
-					$var_to_update = $var;
-				else
-				return;
-			}
-		}
-		
 		
 		$dbinfo = static::$dbinfo;
 		
