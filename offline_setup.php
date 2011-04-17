@@ -930,7 +930,7 @@ echo "\nCreated lib/router.php";
 $base_url = dirname(getenv("SCRIPT_NAME"));
 $contents = <<<HT
 RewriteEngine On
-RewriteBase $base_url
+RewriteBase $base_url/
 
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_FILENAME} =lib [OR]
@@ -944,8 +944,21 @@ RewriteCond %{REQUEST_FILENAME} offline_setup\.php [OR]
 RewriteCond %{REQUEST_FILENAME} online_setup\.php [OR]
 RewriteCond %{REQUEST_FILENAME} \.htaccess [OR]
 RewriteCond %{REQUEST_FILENAME} config\.php [OR]
+RewriteCond %{REQUEST_FILENAME} base\.php [OR]
+RewriteCond %{REQUEST_FILENAME} sammy\.php [OR]
+RewriteCond %{REQUEST_FILENAME} views\.php [OR]
+RewriteCond %{REQUEST_FILENAME} controllers\.php [OR]
+RewriteCond %{REQUEST_FILENAME} model\.php [OR]
+RewriteCond %{REQUEST_FILENAME} router\.php [OR]
+RewriteCond %{REQUEST_FILENAME} object\.php [OR]
 RewriteCond %{REQUEST_FILENAME} \.gitignore [OR]
 RewriteCond %{REQUEST_FILENAME} README\.md
+RewriteRule (.*) index.php/$1
+
+RewriteCond %{REQUEST_URI} lib [OR]
+RewriteCond %{REQUEST_URI} app [OR]
+RewriteCond %{REQUEST_URI} tmp [OR]
+RewriteCond %{REQUEST_URI} err
 RewriteRule (.*) index.php/$1
 
 RewriteCond %{REQUEST_FILENAME} !-f
