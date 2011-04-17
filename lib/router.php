@@ -64,7 +64,7 @@ class Router {
 	public static function redirect($type, $url, $to) {
 		$type = strtoupper($type);
 		if($to[0] != "/") {
-			$to = ROOT_PATH . "/" . $to;
+			$to = ROOT_PATH . $to;
 		}
 		switch($type)
 		{
